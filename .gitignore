@@ -2,7 +2,7 @@
 *.xls
 *.ipynb
 !ipc_do.ipynb
-*.html
+#*.html
 *.pdf
 *.csv
 *.txt
