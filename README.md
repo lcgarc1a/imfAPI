@@ -71,6 +71,20 @@ shape: (301, 2)
 ...        .alias('Año')
 ...    )
 ... )
+>>> df = (
+...    df
+...    .with_columns(
+...        pl.col('Año')
+...        .str.strip_chars()
+...        .fill_null(strategy="forward")
+...        .cast(pl.Int64, strict=False)
+...        .fill_null(strategy="forward"),
+...        pl.col('Indice').cast(pl.Float64),
+...        pl.col('Mes')
+...        .str.strip_chars()
+...    )
+...    .drop_nulls()
+... )
 >>> meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio',\
 ... 'Agosto','Septiembre','Octubre','Noviembre','Diciembre']
 >>> df = (
