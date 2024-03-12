@@ -53,6 +53,7 @@ shape: (301, 2)
 ### Descargando el Excel del BCRD
 
 ```python
+>>> import requests
 >>> import polars as pl
 >>> url = "https://cdn.bancentral.gov.do/documents/estadisticas/\
 ... precios/documents/ipc_base_2019-2020.xls?v=1687458753373"
@@ -76,7 +77,6 @@ shape: (301, 2)
 ...    .with_columns(
 ...        pl.col('Año')
 ...        .str.strip_chars()
-...        .fill_null(strategy="forward")
 ...        .cast(pl.Int64, strict=False)
 ...        .fill_null(strategy="forward"),
 ...        pl.col('Indice').cast(pl.Float64),
